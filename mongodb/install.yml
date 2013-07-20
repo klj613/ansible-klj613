@@ -1,0 +1,17 @@
+---
+
+- name: Installs mongodb from 10gen
+  hosts: mongodb
+  tasks:
+    - include: ./task/latest.yml
+      when: version is not defined
+
+    - include: ./task/versioned.yml
+      when: version is defined
+
+    - include: ./task/lock.yml
+      when: version is defined or lock is defined
+
+  handlers:
+    - name: restart mongod
+      action: service name=mongod state=restarted

@@ -1,0 +1,12 @@
+---
+
+- name: Install a yum repo
+  hosts: all
+  vars_files:
+    - var/${repo}.yml
+  tasks:
+    - copy: src=./file/repo/${file}
+            dest=/etc/yum.repos.d/
+    - copy: src=./file/key/${keyfile}
+            dest=/etc/pki/rpm-gpg/
+      when: keyfile is defined

@@ -1,0 +1,6 @@
+---
+
+#- include: ./yum/repository.yml repo=10gen # install the 10gen yup repo
+#- include: ./mongodb/install.yml lock=true # installs latest then lock the package
+#- include: ./mongodb/install.yml version=2.2.5 # locks package if specified version
+#- include: ./mongodb/install.yml # installs latest and doesn't lock package

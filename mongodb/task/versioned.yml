@@ -1,0 +1,9 @@
+---
+
+- name: Install specific version of mongodb-server from 10gen yum repo
+  action: yum
+          name=mongo-10gen-server-${version}
+          state=installed
+  when: version is defined
+  notify:
+    - restart mongod

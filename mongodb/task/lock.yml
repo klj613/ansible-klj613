@@ -1,0 +1,7 @@
+---
+
+ - name: Lock mongodb package version
+   lineinfile: dest=/etc/yum.repos.d/10gen.repo
+               regexp="exclude=mongo-10gen-server"
+               line="exclude=mongo-10gen-server"
+               state=present

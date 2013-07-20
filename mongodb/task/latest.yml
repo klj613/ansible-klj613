@@ -1,0 +1,13 @@
+---
+
+ - name: Ensure mongo package isn't locked
+   lineinfile: dest=/etc/yum.repos.d/10gen.repo
+               regexp="exclude=mongo-10gen-server"
+               state=absent
+
+ - name: Install mongodb-server from 10gen yum repo
+   action: yum
+           name=mongo-10gen-server
+           state=installed
+   notify:
+     - restart mongod
