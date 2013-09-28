@@ -1,0 +1,10 @@
+---
+
+- copy: src=../files/10gen.repo
+       dest=/etc/yum.repos.d/
+
+- name: Toggle repository
+  ini_file: dest=/etc/yum.repos.d/10gen.repo
+            section=10gen
+            option=enabled
+            value=1

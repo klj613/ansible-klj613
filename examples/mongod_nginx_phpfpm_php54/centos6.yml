@@ -1,0 +1,22 @@
+---
+
+- hosts: all
+  tasks:
+    - group_by: key={{ ansible_distribution }}
+
+- hosts: CentOS
+  tasks:
+    - action: $ansible_pkg_mgr name=redhat-lsb state=installed
+      notify: re-run setup
+  handlers:
+    - name: re-run setup
+      action: setup
+
+- hosts: CentOS
+  tasks:
+    - group_by: key={{ ansible_distribution }}_{{ ansible_lsb.major_release }}
+
+- hosts: CentOS_6
+  roles:
+    - epel_release
+    - ius_release

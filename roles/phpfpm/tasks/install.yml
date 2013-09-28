@@ -1,0 +1,6 @@
+---
+
+- name: Install php-fpm
+  action: $ansible_pkg_mgr name=php-fpm state=installed
+  notify:
+    - restart php-fpm

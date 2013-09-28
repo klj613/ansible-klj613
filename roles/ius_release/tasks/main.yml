@@ -1,0 +1,24 @@
+---
+
+- name: Install ius repo file
+  copy: src=../files/ius.repo
+        dest=/etc/yum.repos.d/
+        owner=root group=root mode=0644
+  sudo: true
+
+- name: Install ius GPG key
+  copy: src=../files/IUS-COMMUNITY-GPG-KEY
+        dest=/etc/pki/rpm-gpg/
+        owner=root group=root mode=0644
+  sudo: true
+
+- name: Toggle repository
+  ini_file: dest=/etc/yum.repos.d/ius.repo
+            section=ius
+            option=enabled
+            value=1
+  sudo: true
+
+- name: Install ius-release
+  action: $ansible_pkg_mgr name=ius-release state=installed
+  sudo: true
