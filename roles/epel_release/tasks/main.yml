@@ -1,0 +1,24 @@
+---
+
+- name: Install epel repo file
+  copy: src=../files/epel.repo
+        dest=/etc/yum.repos.d/
+        owner=root group=root mode=0644
+  sudo: true
+
+- name: Install epel GPG key
+  copy: src=../files/RPM-GPG-KEY-EPEL-6
+        dest=/etc/pki/rpm-gpg/
+        owner=root group=root mode=0644
+  sudo: true
+
+- name: Toggle repository
+  ini_file: dest=/etc/yum.repos.d/epel.repo
+            section=epel
+            option=enabled
+            value=1
+  sudo: true
+
+- name: Install epel-release
+  action: $ansible_pkg_mgr name=epel-release state=installed
+  sudo: true

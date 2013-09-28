@@ -1,0 +1,5 @@
+---
+- hosts: mongod
+  roles:
+    - 10gen
+    - mongod

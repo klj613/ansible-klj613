@@ -2,4 +2,4 @@
 name=10gen Repository
 baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/$basearch
 gpgcheck=0
-enabled=1
+enabled=0

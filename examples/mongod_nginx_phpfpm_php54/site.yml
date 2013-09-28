@@ -1,0 +1,4 @@
+---
+- include: centos6.yml
+- include: dbservers.yml
+- include: webservers.yml
