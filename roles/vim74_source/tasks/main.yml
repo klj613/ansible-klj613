@@ -1,0 +1,20 @@
+---
+
+- name: vim 7.4 | removing currently installed vim
+  action: $ansible_pkg_mgr pkg={{ item }} state=removed
+  with_items:
+    - vim-enhanced
+    - vim
+
+- name: vim 7.4 | checkout / update repo
+  ansible: hg repo=https://code.google.com/p/vim/ dest=/tmp/compile-vim
+
+- name: vim 7.4 | installing compiling deps
+  action: $ansible_pkg_mgr pkg={{ item }} state=installed
+  with_items:
+    - ncurses-devel
+    - make
+    - gcc
+
+- name: vim 7.4 | install
+  action: shell "! which vim > /dev/null && /tmp/compile-vim/configure --with-features=huge & make VIMRUNTIMEDIR=/usr/share/vim/vim74 -C /tmp/compile-vim && make install -C /tmp/compile-vim"
