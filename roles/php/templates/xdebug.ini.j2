@@ -1,0 +1,5 @@
+zend_extension=/usr/lib64/php/modules/xdebug.so
+
+{% if xdebug.max_nesting_level is defined %}
+xdebug.max_nesting_level={{ xdebug.max_nesting_level }}
+{% endif %}

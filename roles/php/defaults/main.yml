@@ -1,0 +1,8 @@
+---
+
+php_version: php54
+php_config_dir: /etc/php.d/
+php_server: php-fpm
+
+xdebug:
+    enabled: false

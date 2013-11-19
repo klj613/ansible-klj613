@@ -1,0 +1,21 @@
+---
+
+- name: Ensure php is installed
+  action: $ansible_pkg_mgr name={{ php_version }} state=installed
+  tags:
+    - install
+
+- name: Ensure php is updated
+  action: $ansible_pkg_mgr name={{ php_version }} state=latest
+  tags:
+    - update
+
+- name: Set default php date.timezone
+  ini_file: dest={{ php_config_dir }}/timezone.ini
+            section=PHP
+            option=date.timezone
+            value=UTC
+            state=present
+  tags:
+    - install
+    - config

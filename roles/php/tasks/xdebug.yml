@@ -1,0 +1,30 @@
+---
+
+- name: Ensure php xdebug is installed
+  action: $ansible_pkg_mgr pkg={{ php_version }}-pecl-xdebug state=present
+  when: xdebug.enabled == 'true'
+  tags:
+    - install
+
+- name: Ensure php xdebug is updated
+  action: $ansible_pkg_mgr pkg={{ php_version }}-pecl-xdebug state=latest
+  when: xdebug.enabled == 'true'
+  tags:
+    - update
+
+- name: Enable php xdebug
+  template: src=xdebug.ini.j2
+            dest={{ php_config_dir }}/xdebug.ini
+  when: xdebug.enabled == 'true'
+  notify:
+    - restart php server
+  tags:
+    - config
+
+- name: Disable php xdebug
+  file: name={{ php_config_dir }}/xdebug.ini state=absent
+  when: xdebug.enabled == 'false'
+  notify:
+    - restart php server
+  tags:
+    - config

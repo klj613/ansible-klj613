@@ -1,0 +1,4 @@
+---
+
+- name: restart php server
+  service: name={{ php_server }} state=restarted

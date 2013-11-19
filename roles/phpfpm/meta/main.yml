@@ -1,0 +1,4 @@
+---
+
+dependencies:
+  - { role: php, php_server: php-fpm }
