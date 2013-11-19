@@ -3,6 +3,8 @@
 - hosts: all
   tasks:
     - group_by: key={{ ansible_distribution }}
+  tags:
+    - install
 
 - hosts: CentOS
   tasks:
@@ -11,12 +13,18 @@
   handlers:
     - name: re-run setup
       action: setup
+  tags:
+    - install
 
 - hosts: CentOS
   tasks:
     - group_by: key={{ ansible_distribution }}_{{ ansible_lsb.major_release }}
+  tags:
+    - install
 
 - hosts: CentOS_6
   roles:
     - epel_release
     - ius_release
+  tags:
+    - install
