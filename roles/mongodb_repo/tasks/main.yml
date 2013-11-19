@@ -1,10 +1,10 @@
 ---
 
-- copy: src=../files/10gen.repo
+- copy: src=../files/mongodb.repo
        dest=/etc/yum.repos.d/
 
 - name: Toggle repository
-  ini_file: dest=/etc/yum.repos.d/10gen.repo
-            section=10gen
+  ini_file: dest=/etc/yum.repos.d/mongodb.repo
+            section=mongodb
             option=enabled
             value=1
