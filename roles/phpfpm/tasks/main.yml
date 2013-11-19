@@ -1,3 +1,26 @@
 ---
 
-- include: ./install.yml
+- name: Ensure php-fpm is installed
+  action: $ansible_pkg_mgr name={{ php_version }}-fpm state=installed
+  notify:
+    - restart php-fpm
+  tags:
+    - install
+
+- name: Ensure php-fpm is updated
+  action: $ansible_pkg_mgr name={{ php_version }}-fpm state=latest
+  notify:
+    - restart php-fpm
+  tags:
+    - update
+
+- name: Remove default pool
+  file: path=/etc/php-fpm.d/www.conf
+        state=absent
+  tags:
+    - install
+
+- name: Disable php-fpm
+  service: name=php-fpm enabled=no
+  tags:
+    - install
