@@ -14,12 +14,6 @@
   tags:
     - update
 
-- name: Remove default pool
-  file: path=/etc/php-fpm.d/www.conf
-        state=absent
-  tags:
-    - install
-
 - name: Disable php-fpm
   service: name=php-fpm enabled=no
   tags:
