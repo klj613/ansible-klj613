@@ -1,0 +1,12 @@
+---
+
+- include: ./unlock.yml
+
+- include: ./latest.yml
+  when: mongodb_client_version is not defined
+
+- include: ./versioned.yml
+  when: mongodb_client_version is defined
+
+- include: ./lock.yml
+  when: mongodb_client_version is defined or mongodb_client_lock is defined

@@ -1,5 +1,5 @@
 ---
 - hosts: mongod
   roles:
-    - 10gen
-    - mongod
+    - mongodb_10gen_client
+    - mongodb_10gen_server

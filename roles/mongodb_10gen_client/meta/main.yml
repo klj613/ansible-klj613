@@ -1,0 +1,4 @@
+---
+
+dependencies:
+  - mongodb_10gen_repo

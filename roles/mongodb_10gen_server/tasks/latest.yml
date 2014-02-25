@@ -1,0 +1,17 @@
+---
+
+ - name: Install mongodb-server from mongodb yum repo
+   action: yum
+           name=mongo-10gen-server
+           state=installed
+   notify:
+     - restart mongod
+
+ - name: Upgrade to latest mongodb-server from mongodb yum repo
+   action: yum
+           name=mongo-10gen-server
+           state=latest
+   tags:
+     - upgrade_mongodb_server
+   notify:
+     - restart mongod

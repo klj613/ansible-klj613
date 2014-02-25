@@ -2,3 +2,5 @@
 
 - name: restart mongod
   service: name=mongod state=restarted
+  delegate_to: "{{ item }}"
+  with_items: groups.mongod

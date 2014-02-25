@@ -1,0 +1,13 @@
+---
+
+- name: Install specific version of mongodb-client from mongodb yum repo
+  action: yum
+          name={{ packages[mongodb_client_version] }}
+          state=installed
+
+- name: Upgrade to a specific version of mongodb-client from mongodb yum repo
+  action: yum
+          name={{ packages[mongodb_client_version] }}
+          state=installed
+  tags:
+    - upgrade_mongodb_client

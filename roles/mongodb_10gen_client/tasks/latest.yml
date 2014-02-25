@@ -1,0 +1,6 @@
+---
+
+ - name: Install mongodb-client from mongodb yum repo
+   action: yum
+           name=mongo-10gen
+           state=installed

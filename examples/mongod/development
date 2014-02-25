@@ -5,4 +5,9 @@ dbservers
 mongod
 
 [mongod]
-mongod_01 ansible_ssh_host=192.168.33.200
+192.168.33.200
+
+; versions are optional. if the var doesnt exist it will install from latest!
+[mongod:vars]
+mongodb_client_version=2.4.9
+mongodb_server_version=2.4.9

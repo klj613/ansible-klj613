@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./run_ansible --tags mongodb_client_package_locker,upgrade_mongodb_client,mongodb_server_package_locker,upgrade_mongodb_server $@
