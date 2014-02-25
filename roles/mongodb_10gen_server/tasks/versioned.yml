@@ -2,14 +2,14 @@
 
 - name: Install specific version of mongodb-server from mongodb yum repo
   action: yum
-          name={{ packages[mongodb_server_version] }}
+          name={{ mongodb_server_version }}
           state=installed
   notify:
     - restart mongod
 
 - name: Upgrade to a specific version of mongodb-server from mongodb yum repo
   action: yum
-          name={{ packages[mongodb_server_version] }}
+          name={{ mongodb_server_version }}
           state=installed
   notify:
     - restart mongod

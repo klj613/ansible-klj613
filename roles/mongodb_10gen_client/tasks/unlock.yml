@@ -2,8 +2,8 @@
 
  - name: Unlock mongodb-client package version
    lineinfile: dest=/etc/yum.repos.d/mongodb.repo
-               regexp="exclude=mongo-10gen"
-               line="exclude=mongo-10gen"
+               regexp="exclude={{ mongodb_client_package }}"
+               line="exclude={{ mongodb_client_package }}"
                state=absent
    tags:
      - mongodb_client_package_locker

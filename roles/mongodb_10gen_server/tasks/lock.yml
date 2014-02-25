@@ -2,8 +2,8 @@
 
  - name: Lock mongodb-server package version
    lineinfile: dest=/etc/yum.repos.d/mongodb.repo
-               regexp="exclude=mongo-10gen-server"
-               line="exclude=mongo-10gen-server"
+               regexp="exclude={{ mongodb_server_package }}"
+               line="exclude={{ mongodb_server_package }}"
                state=present
    tags:
      - mongodb_server_package_locker

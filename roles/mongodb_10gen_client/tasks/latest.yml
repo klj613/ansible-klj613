@@ -2,5 +2,12 @@
 
  - name: Install mongodb-client from mongodb yum repo
    action: yum
-           name=mongo-10gen
+           name={{ mongodb_client_package }}
            state=installed
+
+ - name: Upgrade to latest mongodb-client from mongodb yum repo
+   action: yum
+           name={{ mongodb_client_package }}
+           state=latest
+   tags:
+     - upgrade_mongodb_client

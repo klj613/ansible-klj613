@@ -7,7 +7,10 @@ mongod
 [mongod]
 192.168.33.200
 
+; package names are optional. defaults to current ones for 2.4.x
 ; versions are optional. if the var doesnt exist it will install from latest!
 [mongod:vars]
-mongodb_client_version=2.4.9
-mongodb_server_version=2.4.9
+mongodb_client_package=mongo-10gen
+mongodb_server_package=mongo-10gen-server
+mongodb_client_version=mongo-10gen-2.4.9-mongodb_1.x86_64
+mongodb_server_version=mongo-10gen-server-2.4.9-mongodb_1.x86_64
