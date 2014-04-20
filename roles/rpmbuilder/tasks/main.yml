@@ -1,0 +1,11 @@
+---
+
+- name: Install packages for RPM building
+  yum: name={{ item }} state=installed
+  with_items:
+    - git18
+    - rpm-build
+    - rpmdevtools
+
+- name: Create builder user
+  user: name=builder
