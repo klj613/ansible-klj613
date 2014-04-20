@@ -1,0 +1,10 @@
+---
+
+- hosts: rpmbuilder
+  roles:
+    - rpmbuilder
+
+- hosts: testapp
+  roles:
+    - ius_release
+    - epel_release
