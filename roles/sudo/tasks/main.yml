@@ -1,0 +1,12 @@
+---
+
+- yum: name=sudo state=installed
+
+- file: path=/etc/sudoers.d/{{ name }}_{{ target }}
+  when: state == "absent"
+
+- template:
+    src=template.j2
+    dest=/etc/sudoers.d/{{ name }}_{{ target }}
+    owner=root group=root mode=0440
+  when: state == "present"
