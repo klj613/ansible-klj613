@@ -1,0 +1,5 @@
+---
+
+- name: Remove sudoers config for a deleted user
+  shell: rm -f /etc/sudoers.d/{{ item }}_*
+  with_items: users[group]

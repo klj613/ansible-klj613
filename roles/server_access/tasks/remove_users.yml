@@ -1,0 +1,9 @@
+---
+
+- name: Remove group "{{ group }}" users
+  user: name={{ item }}
+        home=/home/{{ item }}
+        shell=/bin/bash
+        state=absent
+        remove=true
+  with_items: users[group]

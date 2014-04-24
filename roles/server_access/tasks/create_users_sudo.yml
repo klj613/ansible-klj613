@@ -1,0 +1,8 @@
+---
+
+- name: Add sudoers ALL for a user
+  template:
+    src=sudo.j2
+    dest=/etc/sudoers.d/{{ item }}_ALL
+    owner=root group=root mode=0440
+  with_items: users[group]

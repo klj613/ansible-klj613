@@ -1,0 +1,22 @@
+---
+
+- name: Create group "{{ group }}" users
+  user: name={{ item }}
+        home=/home/{{ item }}
+        shell=/bin/bash
+        state=present
+  with_items: users[group]
+
+- name: Create users .ssh folder
+  file: path=/home/{{ item }}/.ssh
+        owner={{ item }}
+        mode=0700
+        state=directory
+  with_items: users[group]
+
+- name: Copy users authorized_keys
+  copy: src=authorized_keys_{{ item }}
+        dest=/home/{{ item }}/.ssh/authorized_keys
+        owner={{ item }}
+        mode=0600
+  with_items: users[group]

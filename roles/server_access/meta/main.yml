@@ -1,0 +1,4 @@
+---
+
+dependencies:
+  - { role: 'server_access', group: 'oldstaff', state: 'absent' }

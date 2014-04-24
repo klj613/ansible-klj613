@@ -1,0 +1,8 @@
+---
+
+- hosts: server_access
+  roles:
+    - { role: server_access, group: developers, sudoer: true, state: present }
+    - { role: server_access, group: dba, sudoer: false, state: present }
+    - { role: sudo, name: zulu, target: ALL, state: present }
+    - { role: sudo, name: zulu, target: alpha, state: present }

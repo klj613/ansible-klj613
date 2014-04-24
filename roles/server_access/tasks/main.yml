@@ -1,0 +1,19 @@
+---
+
+- name: Install sudo
+  yum: name=sudo state=installed
+
+- include: remove_users_sudo.yml
+  when: state == "absent"
+
+- include: remove_users.yml
+  when: state == "absent"
+
+- include: create_users.yml
+  when: state == "present"
+
+- include: revoke_users_root_sudo.yml
+  when: state == "present" and sudoer == false
+
+- include: create_users_sudo.yml
+  when: state == "present" and sudoer == true

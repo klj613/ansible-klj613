@@ -1,0 +1,11 @@
+---
+
+users:
+  oldstaff:
+    - beta
+  developers:
+    - alpha
+    - bravo
+  dba:
+    - zulu
+    - yankee

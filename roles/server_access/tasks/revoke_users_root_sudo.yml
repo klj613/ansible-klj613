@@ -1,0 +1,6 @@
+---
+
+- name: Revoke root sudo access for "{{ group }}" 
+  file: name=/etc/sudoers.d/{{ item }}_ALL
+        state=absent
+  with_items: users[group]
